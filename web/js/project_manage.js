@@ -532,7 +532,7 @@ const app = Vue.createApp({
                     // console.log("延迟了 1 秒。");
                     this.cadLoad();
                     this.set_up_viewport_for_cad();
-                }, 1000);
+                }, 3000);
             }
             if (item.text == "Scene Editor") {
                 this.rbfx_load();
@@ -546,7 +546,7 @@ const app = Vue.createApp({
                             console.log("+- digital_twin_wrap.js is download.");
                         });
                     }
-                }, 1000);
+                }, 3000);
             }
         },
         nav_menu_help_item_click(item) {
@@ -565,7 +565,7 @@ const app = Vue.createApp({
                 var md = window.frames["mark_down_frame"];
                 var md_view = window.frames["mark_down_view"];
                 md_view.document.body.innerHTML = "<link rel='stylesheet' href='css/fm_markdown.css' /> \n" + FM_GLOBAL.MARKDOWN.render(md.document.body.innerText);
-            }, 1000);
+            }, 3000);
         },
         tweakpane_hidden() {
             FM_GLOBAL.TWEAKPANLE.hidden = !FM_GLOBAL.TWEAKPANLE.hidden;
