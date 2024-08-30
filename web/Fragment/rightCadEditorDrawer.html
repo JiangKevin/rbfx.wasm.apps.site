@@ -1,0 +1,67 @@
+<v-navigation-drawer location="right" v-model="is_right_cad_editor_drawer" permanent temporary class="fm_right_contain_code_drawer">
+    <!--  -->
+    <div class="fm_card_input_group_right_nopadding">
+        <div class="right_cad_drawer_top_toolbar">
+            <!--  -->
+            <v-btn density="compact" icon rounded="0" height="20" width="62" size="x-small" color="background" @click="run_js_code_for_cad_editor">
+                <v-icon>mdi-play</v-icon>
+            </v-btn>
+            <v-divider vertical></v-divider>
+            <!--  -->
+            <input id="cad-code-file" name="cad-code-file" type="file" accept=".txt" style="display: none" />
+            <label for="cad-code-file" title="Load Text from File" class="code_upload_download_btn_label"
+                ><i class="mdi-folder-open mdi v-icon notranslate v-theme--FmTheme v-icon--size-small" aria-hidden="true"></i
+            ></label>
+            <v-divider vertical></v-divider>
+            <!--  -->
+            <v-btn density="compact" icon rounded="0" height="20" width="30" size="x-small" color="background" @click="save_js_code_for_cad_editor">
+                <v-icon>mdi-content-save</v-icon>
+            </v-btn>
+            <v-divider vertical></v-divider>
+            <!--  -->
+            <v-btn density="compact" icon rounded="0" height="20" width="30" size="x-small" color="background" @click="tweakpane_hidden">
+                <v-icon>mdi-parachute</v-icon>
+            </v-btn>
+            <v-divider vertical></v-divider>
+            <!--  -->
+            <v-btn density="compact" icon rounded="0" height="20" width="30" size="x-small" color="background" @click="format_js_code_for_cad_editor">
+                <v-icon>mdi-format-paint</v-icon>
+            </v-btn>
+            <v-divider vertical></v-divider>
+            <!--  -->
+            <!-- <v-btn density="compact" icon rounded="0" height="20" width="30" size="x-small" color="background" @click="set_up_viewport_for_cad">
+                <v-icon>mdi-cube-scan</v-icon>
+            </v-btn>
+            <v-divider vertical></v-divider> -->
+            <!--  -->
+            <!--  -->
+            <v-btn density="compact" icon rounded="0" height="20" width="14" size="x-small" color="background" class="rcdttt_btn_right" @click="open_cad_editor_help">
+                <v-icon>mdi-help-network</v-icon>
+            </v-btn>
+            <v-divider vertical></v-divider>
+        </div>
+        <!--  -->
+        <v-divider></v-divider>
+
+        <!--  -->
+        <div id="code_vs_container"></div>
+        <!--  -->
+        <div class="fm_v_table_div" v-show="show_code_help">
+            <v-overlay id="fm_code_help_div" :model-value="show_code_help" class="justify-left fm_overlay_mini" contained>
+                <div class="fm_help_div" v-for="item in help_code" :key="item.name">
+                    <v-chip density="compact" size="small" color="cyan" variant="outlined" label rounded="0">
+                        <v-icon icon="mdi-key-arrow-right" start></v-icon>
+                        {{item.name}}
+                    </v-chip>
+
+                    <span>{{item.illustrate}}</span>
+                </div>
+            </v-overlay>
+        </div>
+        <!--  -->
+        <div class="right_cad_drawer_bottom_toolbar">
+            <span class="right_cad_drawer_bottom_toolbar_span">{{codemirror_code_editor_log}}</span>
+            <span id="cad_code_pos" class="right_cad_drawer_bottom_toolbar_span_right"></span>
+        </div>
+    </div>
+</v-navigation-drawer>

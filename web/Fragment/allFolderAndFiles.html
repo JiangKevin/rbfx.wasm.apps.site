@@ -1,0 +1,102 @@
+<!--  -->
+<div class="fm_right_toolbar">
+    <v-toolbar density="compact" height="48" color="right_tool_bar">
+        <!-- <v-divider vertical></v-divider> -->
+        <v-btn icon rounded="0" size="small" @click="top_button_go_path(selected_folder_path)">
+            <v-icon>mdi-arrow-up</v-icon>
+            <v-tooltip activator="parent" content-class="fm_tool_bar_tooltip" opacity="0.1" location="end">Navigate to the upper folder</v-tooltip>
+        </v-btn>
+        <v-divider vertical></v-divider>
+        <v-btn icon rounded="0" size="small" @click="create_new_folder" :class="is_right_files_newFolder_drawer ? 'fm_tool_btn_down' : 'fm_tool_btn_up'">
+            <v-icon>mdi-folder-plus</v-icon>
+            <v-tooltip activator="parent" content-class="fm_tool_bar_tooltip" opacity="0.1" location="end">New folder</v-tooltip>
+        </v-btn>
+        <v-divider vertical></v-divider>
+        <v-btn icon rounded="0" size="small" @click="checkOrUncheck_all_folder_or_file">
+            <v-icon>mdi-check-all</v-icon>
+            <v-tooltip activator="parent" content-class="fm_tool_bar_tooltip" opacity="0.1" location="end">Select and deselect files or folders</v-tooltip>
+        </v-btn>
+        <v-divider vertical></v-divider>
+        <v-btn icon rounded="0" size="small" @click="clear_check_all_folder_or_file">
+            <v-icon>mdi-broom</v-icon>
+            <v-tooltip activator="parent" content-class="fm_tool_bar_tooltip" opacity="0.1" location="end">Clear the currently selected folder or file</v-tooltip>
+        </v-btn>
+        <v-divider vertical></v-divider>
+        <v-btn icon rounded="0" size="small" @click="zip_folder_or_file_for_selected" :class="is_right_files_zip_drawer ? 'fm_tool_btn_down' : 'fm_tool_btn_up'">
+            <v-icon>mdi-folder-zip</v-icon>
+            <v-tooltip activator="parent" content-class="fm_tool_bar_tooltip" opacity="0.1" location="end">Compress the selected folder</v-tooltip>
+        </v-btn>
+        <v-divider vertical></v-divider>
+        <v-btn icon rounded="0" size="small" @click="unzip_folder_or_file_for_selected" :class="is_right_files_unzip_drawer ? 'fm_tool_btn_down' : 'fm_tool_btn_up'">
+            <v-icon>mdi-folder-zip-outline</v-icon>
+            <v-tooltip activator="parent" content-class="fm_tool_bar_tooltip" opacity="0.1" location="end">Unzip the selected compressed file</v-tooltip>
+        </v-btn>
+        <v-divider vertical></v-divider>
+        <v-btn icon rounded="0" size="small" @click="copy_folder_or_file_for_selected">
+            <v-icon>mdi-content-copy</v-icon>
+            <v-tooltip activator="parent" content-class="fm_tool_bar_tooltip" opacity="0.1" location="end">Copy selected folders and files</v-tooltip>
+        </v-btn>
+        <v-divider vertical></v-divider>
+        <v-btn icon rounded="0" size="small" @click="paste_folder_or_file_for_selected">
+            <v-icon>mdi-content-paste</v-icon>
+            <v-tooltip activator="parent" content-class="fm_tool_bar_tooltip" opacity="0.1" location="end">Paste selected folders and files</v-tooltip>
+        </v-btn>
+        <v-divider vertical></v-divider>
+        <v-btn icon rounded="0" size="small" @click="delete_folder_or_file_for_selected" :class="is_right_files_del_drawer ? 'fm_tool_btn_down' : 'fm_tool_btn_up'">
+            <v-icon>mdi-delete</v-icon>
+            <v-tooltip activator="parent" content-class="fm_tool_bar_tooltip" opacity="0.1" location="end">Delete selected folders and files</v-tooltip>
+        </v-btn>
+        <v-divider vertical></v-divider>
+        <v-breadcrumbs>
+            <v-breadcrumbs-item class="fm_breadcrumbs_item"> {{selected_folder_path}} </v-breadcrumbs-item>
+        </v-breadcrumbs>
+        <v-spacer></v-spacer>
+    </v-toolbar>
+</div>
+<!--  -->
+<div class="fm_right_contain">
+    <v-layout>
+        <v-main>
+            <v-item-group multiple>
+                <v-row dense class="fm_item_group_row">
+                    <v-col v-for="n in folder_and_files" cols="12" md="2" class="fm_item_group_row_item">
+                        <v-item>
+                            <v-card class="mx-auto fm_not_select" :color="n.selected ? 'primary' : 'info'">
+                                <template v-slot:title>
+                                    <span class="fm_file_card_tittle">{{n.name}}</span>
+                                </template>
+                                <template v-slot:subtitle>
+                                    <span class="fm_file_card_subtittle">{{n.uptime}}</span>
+                                </template>
+                                <template v-slot:prepend>
+                                    <v-avatar @click="folder_or_files_click(n)" class="fm_card_prepend_avatar">
+                                        <v-icon :icon="get_icon_for_file_type(n)"></v-icon>
+                                        <v-tooltip activator="parent" content-class="fm_tool_card_tooltip" opacity="0.1" location="end" v-if="is_folder_type(n)">Click to enter this folder</v-tooltip>
+                                    </v-avatar>
+                                </template>
+                                <template v-slot:append>
+                                    <v-avatar class="fm_card_append_avatar_for_check" size="36">
+                                        <div v-if="get_no_top_folder(n)">
+                                            <v-checkbox v-model="n.selected" @click="folder_or_files_check_click(n)"></v-checkbox>
+                                        </div>
+                                    </v-avatar>
+                                </template>
+                            </v-card>
+                        </v-item>
+                    </v-col>
+                </v-row>
+            </v-item-group>
+        </v-main>
+        <div w3-include-html="./Fragment/rightFilesDrawer.html"></div>
+    </v-layout>
+</div>
+<!--  -->
+<div class="fm_right_footer">
+    <v-toolbar density="compact" height="48" color="right_tool_bar">
+        <v-breadcrumbs>
+            <v-breadcrumbs-item class="fm_breadcrumbs_item">The currently selected file path is {{selected_folder_path}} </v-breadcrumbs-item>
+            |
+            <v-breadcrumbs-item class="fm_breadcrumbs_item">The currently selected folder or file is ( {{selected_folder_path}} ) </v-breadcrumbs-item>
+        </v-breadcrumbs>
+    </v-toolbar>
+</div>

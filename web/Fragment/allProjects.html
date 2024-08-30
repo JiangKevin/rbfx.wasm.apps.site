@@ -1,0 +1,85 @@
+<!--  -->
+<div class="fm_right_toolbar">
+    <v-toolbar density="compact" height="48" color="right_tool_bar">
+        <v-btn icon rounded="0" @click="create_project_click" size="small" :class="is_right_project_create_drawer ? 'fm_tool_btn_down' : 'fm_tool_btn_up'">
+            <v-icon>mdi-folder-plus</v-icon>
+            <v-tooltip activator="parent" content-class="fm_tool_bar_tooltip" opacity="0.1" location="end">Create New Proejct</v-tooltip>
+        </v-btn>
+        <v-divider vertical></v-divider>
+        <v-breadcrumbs>
+            <v-breadcrumbs-item class="fm_breadcrumbs_item"> </v-breadcrumbs-item>
+        </v-breadcrumbs>
+        <v-spacer></v-spacer>
+    </v-toolbar>
+</div>
+<!--  -->
+<div class="fm_right_contain">
+    <v-layout>
+        <v-main>
+            <v-item-group>
+                <v-row dense class="fm_item_group_row">
+                    <v-col v-for="n in user_project_list" cols="12" md="3" class="fm_item_group_row_item">
+                        <v-item v-slot="{ isSelected, toggle }">
+                            <v-hover>
+                                <template v-slot:default="{ isHovering, props }">
+                                    <v-card v-bind="props" class="mx-auto fm_not_select" :color="isHovering ? 'primary' : 'info'">
+                                        <v-card-title> {{n.fileName+" ["+n.Id+"]"}} </v-card-title>
+                                        <v-card-subtitle>{{ n.stats.birthtime+' / ' + n.stats.mtime}}</v-card-subtitle>
+                                        <v-card-text class="py-0">
+                                            <v-row align="center" no-gutters>
+                                                <v-col class="text-h3" cols="8"> {{n.stats.size}} </v-col>
+
+                                                <v-col class="text-right" cols="4">
+                                                    <v-icon icon="mdi-folder" size="60"></v-icon>
+                                                </v-col>
+                                            </v-row>
+                                        </v-card-text>
+                                        <v-card-text> {{ n.info.Remark}} </v-card-text>
+                                        <v-divider></v-divider>
+                                        <v-card-actions>
+                                            <v-btn icon="mdi-delete" @click="n.toDel = true" size="small"></v-btn>
+                                            <v-spacer></v-spacer>
+                                            <v-btn icon="mdi-eye" @click="open_project_click(n)" size="small"> </v-btn>
+                                            <v-btn icon="mdi-image-search" @click="texture_import_res_drawer(n)" size="small"> </v-btn>
+                                            <v-btn icon="mdi-cube-scan" size="small" @click="wasm_import_res_drawer(n)"> </v-btn>
+                                        </v-card-actions>
+                                        <v-expand-transition>
+                                            <!-- <div w3-include-html="./Fragment/deleteProjectExpand.html"></div> -->
+                                            <v-card v-if="n.toDel" class="position-absolute w-100" height="100%" style="bottom: 0" color="info">
+                                                <v-card-text class="pb-0">
+                                                    <p class="text-h5">Delete Project</p>
+                                                    <v-divider></v-divider>
+
+                                                    <p class="text-medium-emphasis">
+                                                        Confirm to delete the current project. Once deleted, it cannot be restored. The deleted data includes resource files, project descriptions,
+                                                        scene configurations, etc.
+                                                    </p>
+                                                </v-card-text>
+                                                <div class="submit_contain">
+                                                    <v-card-actions>
+                                                        <v-btn color="fm_ok" class="ml-auto submit_btn" text="Delete" variant="elevated" @click="del_project_click(n)"></v-btn>
+                                                        <v-btn color="fm_cancel" class="ml-auto submit_btn" text="Close" variant="elevated" @click="n.toDel = false"> </v-btn>
+                                                    </v-card-actions>
+                                                </div>
+                                            </v-card>
+                                        </v-expand-transition>
+                                    </v-card> </template
+                            ></v-hover>
+                        </v-item>
+                    </v-col>
+                </v-row>
+            </v-item-group>
+        </v-main>
+        <div w3-include-html="./Fragment/rightProjectDrawer.html"></div>
+    </v-layout>
+</div>
+<!--  -->
+<div class="fm_right_footer">
+    <v-toolbar density="compact" height="48" color="right_tool_bar">
+        <v-breadcrumbs>
+            <v-breadcrumbs-item class="fm_breadcrumbs_item" v-if="have_project_selected_to_modify"
+                >The currently selected project is {{project_selected_to_modify.fileName +" ["+project_selected_to_modify.Id+"]" }}
+            </v-breadcrumbs-item>
+        </v-breadcrumbs>
+    </v-toolbar>
+</div>

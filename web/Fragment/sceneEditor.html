@@ -1,0 +1,51 @@
+<div class="fm_right_rbfx_toolbar">
+    <!--  -->
+    <button class="fm_right_rbfx_toolbar_btn_w" @click="open_rbfx_editor_code_drawer" :class="{ fm_right_rbfx_toolbar_btn_w_background: is_right_rbfx_editor_drawer }">
+        <i class="mdi-crowd mdi"></i><v-tooltip activator="parent" content-class="fm_tool_bar_tooltip" opacity="0.1" location="end">Open Digital Twin Code Editor</v-tooltip>
+    </button>
+    <v-divider vertical></v-divider>
+    <div v-show="is_right_rbfx_editor_drawer" class="sub_fm_right_rbfx_toolbar">
+        <!--  -->
+        <input id="rbfx-code-file" name="rbfx-code-file" type="file" accept=".txt" style="display: none" />
+        <label for="rbfx-code-file" title="Load Text from File" class="rbfx_code_upload_download_btn_label"
+            ><i class="mdi-folder-open mdi"></i><v-tooltip activator="parent" content-class="fm_tool_bar_tooltip" opacity="0.1" location="end">Open Digital Twin Code File</v-tooltip></label
+        >
+        <v-divider vertical></v-divider>
+        <!--  -->
+        <button class="fm_right_rbfx_toolbar_btn" @click="save_js_code_for_rbfx_editor">
+            <i class="mdi-content-save mdi"></i><v-tooltip activator="parent" content-class="fm_tool_bar_tooltip" opacity="0.1" location="end">Save Digital Twin Code File</v-tooltip>
+        </button>
+        <v-divider vertical></v-divider>
+        <!--  -->
+        <button class="fm_right_rbfx_toolbar_btn" @click="run_js_code_for_rbfx_editor">
+            <i class="mdi-play mdi"></i><v-tooltip activator="parent" content-class="fm_tool_bar_tooltip" opacity="0.1" location="end">Run Digital Twin Code</v-tooltip>
+        </button>
+        <v-divider vertical></v-divider>
+        <!--  -->
+        <button class="fm_right_rbfx_toolbar_btn" @click="focus_rbfx_container">
+            <i class="mdi-selection-ellipse-arrow-inside mdi"></i><v-tooltip activator="parent" content-class="fm_tool_bar_tooltip" opacity="0.1" location="end">Focus Digital Twin Editor</v-tooltip>
+        </button>
+        <v-divider vertical></v-divider>
+    </div>
+</div>
+<!--  -->
+<div class="fm_right_contain_no_pading">
+    <v-layout>
+        <v-main>
+            <!--  -->
+            <div id="fm_right_rbfx_contain" class="fm_main_div">
+                <iframe src="common/wasm.html" class="fm_iframe" id="rbfx_wasm_frame" name="rbfx_wasm_frame" onload="rbfx_wasm_frame.focus()"></iframe>
+            </div>
+        </v-main>
+        <div w3-include-html="./Fragment/rightSceneEditorDrawer.html"></div>
+    </v-layout>
+</div>
+
+<!--  -->
+<div class="fm_right_footer">
+    <v-toolbar density="compact" height="48" color="right_tool_bar">
+        <v-breadcrumbs>
+            <v-breadcrumbs-item class="fm_breadcrumbs_item">{{rbfx_code_editor_log}}</v-breadcrumbs-item>
+        </v-breadcrumbs>
+    </v-toolbar>
+</div>

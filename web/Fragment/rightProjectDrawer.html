@@ -1,0 +1,46 @@
+<v-navigation-drawer location="right" v-model="is_right_project_drawer" permanent temporary class="fm_right_contain_drawer" width="400">
+    <!--  -->
+    <div class="fm_card_input_group_right">
+        <div v-if="is_right_project_create_drawer">
+            <v-text-field prepend-icon="mdi-black-mesa" label="Name" variant="outlined" v-model="project_info.name"></v-text-field>
+            <v-textarea prepend-icon="mdi-hololens" prepend-icon="mdi-database-search" label="Remark" variant="outlined" v-model="project_info.info"></v-textarea>
+            <v-select prepend-icon="mdi-database-search" label="Template" variant="outlined" v-model="project_info.wizard" :items="wizard_list"></v-select>
+            <v-file-input id="upload_inputs" ref="upload_inputs" multiple label="Select Resouse Files( ZIP File )" accept=".zip" variant="outlined"></v-file-input>
+            <div class="submit_opacity_contain">
+                <v-btn class="ml-auto ok" variant="elevated" rounded="0px" text="Create" @click="create_and_uploadFiles"></v-btn>
+                <v-btn class="ml-auto cancel" variant="elevated" rounded="0px" text="Close" @click="close_project_drawer"></v-btn>
+            </div>
+        </div>
+        <div v-if="is_right_project_wasm_import_drawer">
+            <div v-if="have_project_selected_to_modify">
+                <v-select prepend-icon="mdi-black-mesa" label="Project" variant="outlined" v-model="resource_info.project" :items="project_list"></v-select>
+                <v-select prepend-icon="mdi-powershell" label="Command" variant="outlined" v-model="res_import_commond_info.command" :items="res_import_commond_list"></v-select>
+                <v-file-input id="upload_inputs" ref="upload_inputs" label="Select Resouse Files( FBX File )" accept=".fbx" variant="outlined" prepend-icon="mdi-cube-scan"></v-file-input>
+                <v-text-field prepend-icon="mdi-cards-diamond" label="Parameter" variant="outlined" v-model="res_import_commond_info.parameter"></v-text-field>
+                <div class="submit_opacity_contain">
+                    <v-btn class="ml-auto ok" variant="elevated" rounded="0px" text="Import" @click="uploadFiles_and_resWasmImport"></v-btn>
+                    <v-btn class="ml-auto cancel" variant="elevated" rounded="0px" text="Close" @click="close_project_drawer"></v-btn>
+                </div>
+            </div>
+        </div>
+        <div v-if="is_right_project_texture_import_drawer">
+            <div v-if="have_project_selected_to_modify">
+                <v-select prepend-icon="mdi-black-mesa" label="Project" variant="outlined" v-model="resource_info.project" :items="project_list"></v-select>
+                <v-text-field prepend-icon="mdi-cards-diamond" label="Target Path" variant="outlined" v-model="res_import_des_info.desPath"></v-text-field>
+                <v-file-input
+                    id="upload_inputs"
+                    ref="upload_inputs"
+                    multiple
+                    label="Select Resouse Files( Texture File Or Other )"
+                    accept=".png"
+                    variant="outlined"
+                    prepend-icon="mdi-image-search"
+                ></v-file-input>
+                <div class="submit_opacity_contain">
+                    <v-btn class="ml-auto ok" variant="elevated" rounded="0px" text="Import" @click="uploadFiles_and_textureWasmImport"></v-btn>
+                    <v-btn class="ml-auto cancel" variant="elevated" rounded="0px" text="Close" @click="close_project_drawer"></v-btn>
+                </div>
+            </div>
+        </div>
+    </div>
+</v-navigation-drawer>

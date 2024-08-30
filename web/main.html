@@ -1,0 +1,86 @@
+<html>
+    <!-- head -->
+    <head>
+        <meta charset="utf-8" />
+        <link rel="icon" type="image/png" href="./img/logo_outlined.png" />
+        <title>FM Digital Twin Editor</title>
+        <!-- css -->
+        <link rel="stylesheet" href="./css/main.css" />
+        <link rel="stylesheet" href="./css/materialdesign/css/materialdesignicons.min.css" />
+        <link href="./css/fontawesome/css/all.css" rel="stylesheet" />
+        <link rel="stylesheet" href="./css/vuetify.min.css" />
+        <link rel="stylesheet" data-name="vs/editor/editor.main" href="./js/monaco-editor/min/vs/editor/editor.main.css" />
+        <link rel="stylesheet" href="css/animate/animate.min.css" />
+        <!-- js -->
+        <script src="./js/other/markdown-it.min.js"></script>
+        <!-- <script src="./js/other/showdown.min.js"></script> -->
+        <script type="text/javascript" src="./js/js-beautify/beautify-css.min.js"></script>
+        <script type="text/javascript" src="./js/js-beautify/beautify.min.js"></script>
+        <script type="text/javascript" src="./js/js-beautify/beautify-html.min.js"></script>
+        <script src="./js/vue/vue.global.js"></script>
+        <script src="./js/vuetify/vuetify.min.js"></script>
+        <script src="./js/other/axios.min.js"></script>
+        <script type="text/javascript" src="./js/common/GlobalVariable.js"></script>
+        <!-- 引入组件库 -->
+        <script src="./js/sha256/sha256.min.js"></script>
+        <script src="./js/monaco-editor/min/vs/loader.js"></script>
+        <!-- last js -->
+        <script src="./js/other/w3.js"></script>
+    </head>
+    <!-- body -->
+
+    <body>
+        <div id="app" class="main_container">
+            <div id="login_div" v-if="!is_logined">
+                <div class="fm_main_login_div">
+                    <div class="fm_main_login_form fm_glossy">
+                        <div class="fm_main_login_form_left">
+                            <v-img :width="200" aspect-ratio="1/1" cover src="./img/logo_outlined.png" class="logo_img animate__animated animate__rubberBand"></v-img>
+                        </div>
+                        <div class="fm_main_login_form_right">
+                            <div class="fm_main_login_form_right_contain">
+                                <v-text-field label="Admin User" variant="outlined" v-model="user_info.username"></v-text-field>
+                                <v-text-field label="Password" variant="outlined" v-model="user_info.password" type="password"></v-text-field>
+                                <div><v-btn @click="login"> Sign in </v-btn> <span>{{login_log}}</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--  -->
+            <div id="main_div" v-if="is_logined">
+                <div class="div_left_form fm_glossy" style="z-index: 9999">
+                    <div w3-include-html="./Fragment/navMenu.html"></div>
+                </div>
+                <div class="div_right_form fm_glossy">
+                    <!--start form  -->
+                    <v-window v-model="menu_navigation_item" color="surface-light">
+                        <v-window-item value="Files Browse">
+                            <div w3-include-html="./Fragment/allFolderAndFiles.html"></div>
+                        </v-window-item>
+                        <v-window-item value="All Proejcts" color="surface-light">
+                            <div w3-include-html="./Fragment/allProjects.html"></div>
+                        </v-window-item>
+                        <v-window-item value="CAD Editor" color="surface-light">
+                            <div w3-include-html="./Fragment/cadEditor.html"></div>
+                        </v-window-item>
+                        <v-window-item value="Scene Editor" color="surface-light">
+                            <div w3-include-html="./Fragment/sceneEditor.html"></div>
+                        </v-window-item>
+                        <v-window-item value="Editor Help" color="surface-light">
+                            <div w3-include-html="./Fragment/helpView.html"></div>
+                        </v-window-item>
+                    </v-window>
+                    <!--end from  -->
+                </div>
+            </div>
+        </div>
+        <!-- 以下是脚本 -->
+        <script type="module" src="./js/common/preMain.js"></script>
+        <script src="./js/common/visualize.js"></script>
+        <script src="./js/modelOperation/basicLib.js"></script>
+        <script src="./js/modelOperation/modelCreate.js"></script>
+        <!--  -->
+        <script src="./js/project_manage.js"></script>
+    </body>
+</html>

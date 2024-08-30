@@ -1,0 +1,52 @@
+<div class="fm_right_toolbar">
+    <v-toolbar density="compact" height="48" color="right_tool_bar">
+        <!--  -->
+        <input id="step-file" name="step-file" type="file" accept=".iges,.step,.igs,.stp,.fbx,.obj,.stl" style="display: none" />
+        <label for="step-file" title="Load STEP from File" class="upload_download_btn_label"
+            ><i class="mdi-cloud-upload mdi v-icon notranslate v-theme--FmTheme v-icon--size-small" aria-hidden="true"></i
+        ><v-tooltip activator="parent" content-class="fm_tool_bar_tooltip" opacity="0.1" location="end" >Upload Model File</v-tooltip></label>
+        <v-divider vertical></v-divider>
+        <!--  -->
+        <v-btn icon rounded="0" size="small" @click="down_load_modle_file">
+            <v-icon>mdi-cloud-download</v-icon>
+            <v-tooltip activator="parent" content-class="fm_tool_bar_tooltip" opacity="0.1" location="end" >Download Model File</v-tooltip>
+        </v-btn>
+        <v-divider vertical></v-divider>
+
+        <!--  -->
+        <v-btn icon rounded="0" size="small" @click="open_cad_editor_code_drawer()">
+            <v-icon>mdi-crowd</v-icon>
+            <v-tooltip activator="parent" content-class="fm_tool_bar_tooltip" opacity="0.1" location="end">Open Cad Code Editor</v-tooltip>
+        </v-btn>
+        <v-divider vertical></v-divider>
+
+        <!--  -->
+        <v-divider vertical></v-divider>
+        <v-breadcrumbs>
+            <v-breadcrumbs-item class="fm_breadcrumbs_item"> </v-breadcrumbs-item>
+        </v-breadcrumbs>
+
+        <v-spacer></v-spacer>
+    </v-toolbar>
+</div>
+<!--  -->
+<div class="fm_right_contain_no_pading">
+    <v-layout>
+        <v-main>
+            <div id="viewport"></div>
+            <v-overlay :model-value="is_overlay" class="align-center justify-center fm_overlay" contained>
+                <v-progress-circular color="primary" size="128" color="amber" width="10" indeterminate></v-progress-circular>
+            </v-overlay>
+        </v-main>
+        <div w3-include-html="./Fragment/rightCadEditorDrawer.html"></div>
+    </v-layout>
+</div>
+
+<!--  -->
+<div class="fm_right_footer">
+    <v-toolbar density="compact" height="48" color="right_tool_bar">
+        <v-breadcrumbs>
+            <v-breadcrumbs-item class="fm_breadcrumbs_item"> {{cad_scene_log}} </v-breadcrumbs-item>
+        </v-breadcrumbs>
+    </v-toolbar>
+</div>

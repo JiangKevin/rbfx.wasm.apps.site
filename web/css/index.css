@@ -1,0 +1,198 @@
+body {
+    width: 100%;
+    height: 100%;
+}
+.main_container {
+    min-height: 100% !important;
+    max-width: 100%;
+    width: 100% !important;
+    min-width: 1400px;
+    background-image: url("../img/beijing.jpeg");
+}
+#files {
+    padding: 12px 20px;
+    width: 100%;
+    border: 1px solid #ccc;
+}
+
+#project_name {
+    padding: 12px 20px;
+    width: 100%;
+    border: 1px solid #ccc;
+}
+.submit-btn {
+    width: 100%;
+    border: none;
+    background: #6200ea;
+    font-size: 18px;
+    color: white !important;
+    border-radius: 3px;
+    padding: 20px;
+    text-align: center;
+}
+.div_form {
+    background-color: #ffffff1d;
+    padding: 30px;
+    height: 100% !important;
+}
+.div_left_form {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 20px;
+    padding-right: 0px;
+    height: 100% !important;
+    backdrop-filter: blur(6px) !important;
+    /* filter: blur(6px); */
+    opacity: 100%;
+}
+.fm_nav_card {
+    height: 100% !important;
+    opacity: 60%;
+    backdrop-filter: blur(50px) !important;
+}
+.div_left_form_card_shadow {
+    box-shadow: -4px 4px 1px #ea5454a3 !important;
+    opacity: 80%;
+    /* box-shadow: -4px 4px 0px rgba(255, 0, 0, 0.549), 4px -4px 0px rgb(255, 0, 0, 0.549) !important;  */
+}
+.div_right_form {
+    background-color: rgb(255, 255, 255);
+    padding: 0px;
+    width: 100%;
+}
+.div_form label {
+    display: block;
+    margin-bottom: 10px;
+}
+.div_form .div_input_group {
+    margin-bottom: 15px;
+}
+.div_right_form .fm_text_fild {
+    display: block;
+    margin-bottom: 10px;
+}
+.div_right_form .fm_title {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 15px;
+    margin-left: 16px;
+    margin-top: 4px;
+    margin-bottom: 4px;
+}
+.div_right_form .div_input_group {
+    margin-bottom: 15px;
+}
+.div_right_form .div_input_group_no_margin {
+    margin-bottom: 1px;
+    min-height: 31px;
+    height: 31px;
+}
+.div_right_form .div_input_group_no_margin .fm_title {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 15px;
+    margin-left: 16px;
+    margin-top: 4px;
+    margin-bottom: 4px;
+    min-height: 23px;
+    height: 23px;
+}
+.div_right_form .div_input_group_no_bottom {
+    margin-bottom: 0px;
+}
+.fm_flex {
+    height: 100% !important;
+}
+
+.fm_iframe_contain {
+    height: 100%;
+    width: 100% !important;
+}
+.fm_contain {
+    height: 100%;
+    width: 100% !important;
+    padding: 0px !important;
+    background-color: #ffffff00;
+}
+.fm_stepper {
+    background: #fdfcfc !important;
+    color: #000000 !important;
+}
+.fm_right_contain {
+    margin-left: 16px;
+    margin-right: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding-right: 26px;
+    width: 100%;
+    height: 100%;
+}
+.fm_right_toolbar {
+    margin-left: 2px;
+    margin-right: 10px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    padding-right: 0pxx;
+    width: 100%;
+}
+.fm_right_footer {
+    position: absolute;
+    margin-left: 6px;
+    margin-right: 10px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    padding-right: 0pxx;
+    width: 100%;
+    bottom: 18px;
+}
+.fm_not_select {
+    user-select: none !important;
+}
+.fm_not_select:hover {
+    user-select: none !important;
+    background: #6200ea !important;
+}
+.fm_button {
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+    min-width: 24px !important;
+}
+.fm_breadcrumbs_item {
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+}
+.fm_card_prepend_avatar {
+    background: #291fb5 !important;
+}
+.fm_card_prepend_avatar:hover {
+    background: #eaa800 !important;
+}
+.fm_card_append_avatar_for_check {
+    background: #291fb500 !important;
+    text-align: center;
+    margin: 0px;
+    padding-top: 22px;
+    /* padding-bottom: 24px; */
+    /* position: absolute; */
+    /* right: 0px; */
+    /* top:0px; */
+    /* left: 0px; */
+    /* bottom: 0px; */
+}
+.fm_card_append_avatar_for_check:hover {
+    background: #eaa80000 !important;
+}
+.fm_file_card_tittle {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: xx-small;
+}
+.fm_file_card_subtittle {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: x-small;
+}
+.fm_divider {
+    height: 1px;
+    width: 100%;
+}
