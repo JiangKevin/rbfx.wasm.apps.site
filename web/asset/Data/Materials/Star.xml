@@ -1,0 +1,5 @@
+<material>
+    <technique name="Techniques/DiffSkybox.xml" />
+    <texture slot="Albedo" name="Textures/FmStar.xml" />
+    <cull value="none" />
+</material>

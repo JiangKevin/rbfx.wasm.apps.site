@@ -1,0 +1,9 @@
+<cubemap>
+    <face name="Textures/postX.dds" />
+    <face name="Textures/negX.dds" />
+    <face name="Textures/postY.dds" />
+    <face name="Textures/negY.dds" />
+    <face name="Textures/postZ.dds" />
+    <face name="Textures/negZ.dds" />
+    <quality low="0" />
+</cubemap>
