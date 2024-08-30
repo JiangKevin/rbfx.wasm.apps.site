@@ -1,0 +1,2 @@
+console.log(FM_GLOBAL.DTWIN._GetWidthOfPropertyWin())
+
