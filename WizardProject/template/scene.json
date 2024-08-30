@@ -1,0 +1,143 @@
+{
+	"attributes": {
+		"Elapsed Time": 192.21701049804688,
+		"Lightmaps": "Texture2D",
+		"Name": "Scene",
+		"Next Component ID": 9,
+		"Next Node ID": 6,
+		"Time Scale": 1.0,
+		"Update Events": [
+			"@SceneForcedUpdate",
+			"SceneUpdate",
+			"AttributeAnimationUpdate",
+			"SceneSubsystemUpdate",
+			"ScenePostUpdate",
+			"@SceneForcedPostUpdate"
+		],
+		"Variables": {}
+	},
+	"children": [
+		{
+			"attributes": {
+				"Is Enabled": true,
+				"Name": "Zone",
+				"Position": "0 0 0",
+				"Rotation": "1 0 0 0",
+				"Scale": "1 1 1",
+				"Tags": [],
+				"Variables": {}
+			},
+			"children": [],
+			"components": [
+				{
+					"attributes": {
+						"Ambient Color": "0.15 0.15 0.15 1",
+						"Bounding Box Max": "1000 1000 1000",
+						"Bounding Box Min": "-1000 -1000 -1000",
+						"Fog Color": "1 1 1 1",
+						"Fog End": 750.0,
+						"Fog Start": 500.0
+					},
+					"id": 2,
+					"type": "Zone"
+				}
+			],
+			"id": 2
+		},
+		{
+			"attributes": {
+				"Is Enabled": true,
+				"Name": "DirectionalLight",
+				"Position": "0 0 0",
+				"Rotation": "0.884784 0.399593 0.239756 -0",
+				"Scale": "1 1 1",
+				"Tags": [],
+				"Variables": {}
+			},
+			"children": [],
+			"components": [
+				{
+					"attributes": {
+						"CSM Splits": "10 50 200 0",
+						"Cast Shadows": true,
+						"Color": "1.2 1.2 1.2 1",
+						"Depth Constant Bias": 0.0002500000118743628,
+						"Light Type": "Directional",
+						"Specular Intensity": 0.5
+					},
+					"id": 3,
+					"type": "Light"
+				}
+			],
+			"id": 3
+		},
+		{
+			"attributes": {
+				"Is Enabled": true,
+				"Name": "Sky",
+				"Position": "0 0 0",
+				"Rotation": "1 0 0 0",
+				"Scale": "500 500 500",
+				"Tags": [],
+				"Variables": {}
+			},
+			"children": [],
+			"components": [
+				{
+					"attributes": {
+						"Material": "Material;Materials/Skybox.xml",
+						"Model": "Model;Models/Box.mdl"
+					},
+					"id": 4,
+					"type": "Skybox"
+				}
+			],
+			"id": 4
+		},
+		{
+			"attributes": {
+				"Is Enabled": true,
+				"Name": "FreeCamera",
+				"Position": "0 2.5 -15",
+				"Rotation": "1 0 0 0",
+				"Scale": "1 1 1",
+				"Tags": [],
+				"Variables": {}
+			},
+			"children": [],
+			"components": [
+				{
+					"attributes": null,
+					"id": 5,
+					"type": "FreeFlyController"
+				},
+				{
+					"attributes": {
+						"Aspect Ratio": 1.8772960901260377
+					},
+					"id": 6,
+					"type": "Camera"
+				}
+			],
+			"id": 5
+		}
+	],
+	"components": [
+		{
+			"attributes": null,
+			"id": 1,
+			"type": "Octree"
+		},
+		{
+			"attributes": null,
+			"id": 7,
+			"type": "RenderPipeline"
+		},
+		{
+			"attributes": null,
+			"id": 8,
+			"type": "ReflectionProbeManager"
+		}
+	],
+	"id": 1
+}
