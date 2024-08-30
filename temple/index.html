@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="../css/common.css" />
+    </head>
+
+    <body style="margin: 0px">
+        <div class="centered">
+            <div class="emscripten" id="status">Downloading...</div>
+            <progress hidden id="progress" max="100" value="10"></progress>
+        </div>
+        <canvas id="canvas" style="cursor: default"></canvas>
+        <script src="../js/pre.js"></script>
+        {{{ SCRIPT }}}
+    </body>
+</html>
