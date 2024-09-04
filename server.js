@@ -35,8 +35,8 @@ app.use(express.json());
 const db_file = "./web/db/Digital.db"; //这里写的就是数据库文件的路径
 const db = new sqlite3.Database(db_file);
 const secretKey = "FM-Digital-Twin";
-const port = 3000;
-const httpsPort = 3001;
+const port = 6000;
+const httpsPort = 6001;
 const PEM_PREFIX = "wasm-scada-web";
 let storage = multer.diskStorage({
     //设置存储路径

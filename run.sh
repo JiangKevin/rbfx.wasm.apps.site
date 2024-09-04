@@ -3,6 +3,7 @@ clear
 reset
 #
 export FmDev=$(pwd)
+echo $ FmDev
 #
 # rm ./common.data -y
 # rm ./data.js -y
